@@ -14,8 +14,15 @@ useEffect(() => {
   .then(data => setTodos(data))
 }, [])
 
+function handleDelete(id) {
+  fetch(`http://localhost:9292/${id}`, {
+    method: 'DELETE'
+  })
+  setTodos(todos.filter(todo => todo.id !== id))
+}
+
   return (
-   <TodoList todos={todos} />
+   <TodoList handleDelete={handleDelete} todos={todos} />
   );
 }
 
