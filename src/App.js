@@ -5,15 +5,17 @@ import TodoList from './components/TodoList'
 
 
 function App() {
+const [todos, setTodos] = useState([])
+
 
 useEffect(() => {
   fetch('http://localhost:9292/')
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => setTodos(data))
 }, [])
 
   return (
-   <TodoList />
+   <TodoList todos={todos} />
   );
 }
 
