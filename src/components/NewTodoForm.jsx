@@ -14,8 +14,9 @@ function handleSubmit(e) {
     const newTask = {
         task: task,
         label_id: label,
-        priority: priority
+        priority_id: priority
     }
+    console.log(priority);
     onSubmit(newTask)
 }
 

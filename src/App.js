@@ -48,14 +48,40 @@ function App() {
       : setFilteredLabels(
           filteredLabels.filter((label) => label.id !== checkedLabel.id)
         );
-    console.log(isChecked);
   }
+
+  function onEditSubmit(todo, editText) {
+    const newTodo = {
+      task: editText,
+      priority_id: todo.priority_id,
+      label_id: todo.label_id,
+    };
+    fetch(`http://localhost:9292/todos/${todo.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newTodo),
+    })
+      .then((res) => res.json())
+      .then((data) =>
+        setTodos(
+          todos.map((currentTodo) =>
+            currentTodo.id === todo.id ? newTodo : currentTodo
+          )
+        )
+      );
+  }
+
   return (
     <div>
       <Header />
       <NewTodoForm onSubmit={onSubmit} />
       <FilterList onCheck={onCheck} labels={labels} />
-      <TodoList handleDelete={onDelete} labels={filteredLabels} todos={todos} />
+      <TodoList
+        onEditSubmit={onEditSubmit}
+        handleDelete={onDelete}
+        labels={filteredLabels}
+        todos={todos}
+      />
     </div>
   );
 }
