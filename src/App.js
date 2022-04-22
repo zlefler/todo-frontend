@@ -19,9 +19,19 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
 
+  function onSubmit(newTask) {
+    fetch(`http://localhost:9292/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newTask),
+    })
+      .then((res) => res.json())
+      .then((data) => setTodos([...todos, data]));
+  }
+
   return (
     <div>
-      <NewTodoForm />
+      <NewTodoForm onSubmit={onSubmit} />
       <TodoList handleDelete={handleDelete} todos={todos} />
     </div>
   );

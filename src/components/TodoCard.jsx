@@ -20,7 +20,7 @@ function TodoCard({todo, handleDelete}) {
       todo.priority_id === 3 ? '🟡' :
       todo.priority_id === 4 ? '🟢' :'🔵'
       }</p>
-      <button className='delete' onClick={() =>handleDelete(todo)}>DELETE</button>
+      <button className='delete' onClick={() =>handleDelete(todo.id)}>DELETE</button>
     </div>
   );
 
