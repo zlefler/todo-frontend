@@ -19,7 +19,7 @@ function handleSubmit(e) {
     onSubmit(newTask)
 }
 
-    return <div className='form'>
+    return <div className='todo-form'>
     <form onSubmit={(e) => handleSubmit(e)}>
 <textarea type="text" placeholder="What's next?" rows='3' onChange={(e) =>handleTaskChange(e.target.value)} value={task} name="task"/>
 <label htmlFor="label">Label</label>
@@ -38,7 +38,7 @@ function handleSubmit(e) {
     <option value="4">4</option>
     <option value="5">5</option>
 </select>
-<button type='submit'>Add</button>
+<button className='add-todo' type='submit'>Add</button>
     </form>
     </div>
 }
