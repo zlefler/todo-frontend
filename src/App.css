@@ -24,7 +24,7 @@ body {
 
 .todo h1 {
   font-size: 1.1em;
-  margin-bottom: 6px;
+  margin: 8px 0;
 }
 .todo p {
   font-size: 1.1em;
@@ -44,5 +44,14 @@ body {
   cursor: pointer;
   outline: none;
   background: #fff;
+}
 
+.label {
+  display: inline-block;
+  background: #e6e6e6;
+  border-radius: 7px;
+}
+
+.priority {
+  float:right
 }
