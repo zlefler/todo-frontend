@@ -14,14 +14,14 @@ function handleSubmit(e) {
     const newTask = {
         task: task,
         label_id: label,
-        priority_id: priority
+        priority: priority
     }
     onSubmit(newTask)
 }
 
-    return <form onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="task">New task</label>
-<input type="text" onChange={(e) =>handleTaskChange(e.target.value)} value={task} name="task"/>
+    return <div className='form'>
+    <form onSubmit={(e) => handleSubmit(e)}>
+<textarea type="text" placeholder="What's next?" rows='3' onChange={(e) =>handleTaskChange(e.target.value)} value={task} name="task"/>
 <label htmlFor="label">Label</label>
 <select name="label" onChange={(e) => setLabel(e.target.value)} value={label} id="label">
     <option value="1">Work</option>
@@ -40,5 +40,6 @@ function handleSubmit(e) {
 </select>
 <button type='submit'>Add</button>
     </form>
+    </div>
 }
 export default NewTodoForm

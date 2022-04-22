@@ -2,6 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import TodoList from './components/TodoList';
 import NewTodoForm from './components/NewTodoForm';
+import Header from './components/Header';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <div>
+      <Header />
       <NewTodoForm onSubmit={onSubmit} />
       <TodoList handleDelete={handleDelete} todos={todos} />
     </div>
