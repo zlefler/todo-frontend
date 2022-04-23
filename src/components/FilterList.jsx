@@ -1,10 +1,10 @@
-import Filter from './Filter'
+import LabelFilter from './LabelFilter'
 
 function FilterList({labels, onCheck}) {
 
     return <form>
         {labels.map(label => (
-            <Filter key={label.label_name} label={label} onCheck={onCheck}/>
+            <LabelFilter key={label.label_name} label={label} onCheck={onCheck}/>
         ))}
     </form>
 }

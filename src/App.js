@@ -4,11 +4,13 @@ import TodoList from './components/TodoList';
 import NewTodoForm from './components/NewTodoForm';
 import Header from './components/Header';
 import FilterList from './components/FilterList';
+import SortForm from './components/SortForm';
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [labels, setLabels] = useState([]);
   const [filteredLabels, setFilteredLabels] = useState([]);
+  const [sortOption, setSortOption] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:9292/todos')
@@ -71,12 +73,21 @@ function App() {
       );
   }
 
+  function onSortChange(value) {
+    fetch(`http://localhost:9292/todos/${value}`, { mode: 'cors' })
+      .then((res) => res.json())
+      .then((data) => setTodos(data));
+    setSortOption(value);
+  }
+
   return (
     <div>
       <Header />
       <NewTodoForm onSubmit={onSubmit} />
       <FilterList onCheck={onCheck} labels={labels} />
+      <SortForm onSortChange={onSortChange} sortOption={sortOption} />
       <TodoList
+        sortOption={sortOption}
         onEditSubmit={onEditSubmit}
         handleDelete={onDelete}
         labels={filteredLabels}
