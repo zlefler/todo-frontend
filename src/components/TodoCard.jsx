@@ -4,9 +4,10 @@ function TodoCard({todo, labels, handleDelete, onEditSubmit}) {
 const [label, setLabel] = useState('')
 const [edit, setEdit] = useState(false)
 const [editText, setEditText] = useState('')
+
 useEffect(() => {
   setLabel(labels.find(label => label.id === todo.label_id).label_name)
-}, [todo.id])
+}, [labels, todo.label_id])
 
 function handleEditClick() {
   setEdit(edit => !edit)
