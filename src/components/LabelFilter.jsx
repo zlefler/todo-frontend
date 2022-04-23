@@ -9,7 +9,7 @@ function handleCheck() {
     
 }
 
-    return <div key={'div' + label.label_name} >
+    return <div className='filter-item' key={'div' + label.label_name} >
     <label htmlFor={label.label_name}>{label.label_name}</label>
 <input onChange={() => handleCheck(label)} type="checkbox" checked={isChecked} name={label.label_name} value={label.label_name}/>
 </div>

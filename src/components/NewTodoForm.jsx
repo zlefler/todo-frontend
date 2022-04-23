@@ -2,8 +2,8 @@ import {useState} from 'react'
 
 function NewTodoForm({onSubmit}) {
 const [task, setTask] = useState('')
-const [label, setLabel] = useState('1')
-const [priority, setPriority] = useState('1')
+const [label, setLabel] = useState('3')
+const [priority, setPriority] = useState('3')
 
 function handleTaskChange(text) {
     setTask(text)
