@@ -29,8 +29,6 @@ body {
 .todo p {
   font-size: 1.1em;
   margin-bottom: 10px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
 }
 
 .delete {
@@ -45,6 +43,29 @@ body {
   outline: none;
   background: #fff;
 }
+
+.edit-button {
+  position: relative;
+  float: left;
+  margin-right: 10px;
+  color: #0F2C67;
+  border: none;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  outline: none;
+  background: #fff;
+}
+
+.edit-input {
+  width: 100%;
+  border: none;
+  /* padding: 4px; */
+  outline: none;
+  font-size: 1.2em;
+  resize: none;
+}
+
 
 .label {
   display: inline-block;
@@ -116,3 +137,7 @@ div.filter-item > input{
 form.sort > label {
   padding: 2% 1%;
 }
+
+/* .label-text {
+  background-color: #0F2C67;
+} */

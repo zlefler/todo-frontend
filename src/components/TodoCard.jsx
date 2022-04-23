@@ -35,13 +35,13 @@ function handleEditChange(e) {
       }</p>
       {edit ? 
       <form onSubmit={(e) => handleEditSubmit(e)} name='edit-form'>
-        <input type='text' value={editText} onChange={(e) => handleEditChange(e)} name='new_task' />
-        <button type='submit'>Save</button>
+        <input type='text' className='edit-input' placeholder={todo.task} value={editText} onChange={(e) => handleEditChange(e)} name='new_task' />
+        <button className='edit-button' type='submit'>Save</button>
       </form> : 
       <div>
       <h1>{todo.task}</h1>
       <button className='delete' onClick={() => handleDelete(todo.id)}>DELETE</button>
-      <button className='edit' onClick={() => handleEditClick()} >edit</button> 
+      <button className='edit-button' onClick={() => handleEditClick()} >EDIT</button> 
       </div>}
     </div>
   );

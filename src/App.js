@@ -67,7 +67,7 @@ function App() {
       .then((data) =>
         setTodos(
           todos.map((currentTodo) =>
-            currentTodo.id === todo.id ? newTodo : currentTodo
+            currentTodo.id === todo.id ? data : currentTodo
           )
         )
       );

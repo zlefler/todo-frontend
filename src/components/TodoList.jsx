@@ -1,6 +1,6 @@
 import TodoCard from './TodoCard'
 
-function TodoList({todos, labels, handleDelete, onEditSubmit, sortOption}) {
+function TodoList({todos, labels, handleDelete, onEditSubmit}) {
 
 const filtered_labels = labels.map(label => label.id)
 
