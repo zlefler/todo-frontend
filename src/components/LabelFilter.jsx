@@ -6,7 +6,6 @@ const [isChecked, setIsChecked] = useState(true)
 function handleCheck() {
     onCheck(label, !isChecked)
     setIsChecked(isChecked => !isChecked)
-    
 }
 
     return <div className='filter-item' key={'div' + label.label_name} >

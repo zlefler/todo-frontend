@@ -4,12 +4,31 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
-/* html {
-  font-family: "Montserrat", sans-serif;
-} */
+
 body {
   background: #eee;
   padding: 0 16px;
+}
+
+header {
+  background-color: #cf142b;
+  margin: auto -16px;
+  padding: 16px 32px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  color: #fff
+}
+
+select {
+  appearance: none;
+  margin: 10px;
+  font-size: 16px;
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  height: 34px;
+  text-align: center
 }
 
 .todo {
@@ -60,12 +79,10 @@ body {
 .edit-input {
   width: 100%;
   border: none;
-  /* padding: 4px; */
   outline: none;
   font-size: 1.2em;
   resize: none;
 }
-
 
 .label {
   display: inline-block;
@@ -75,17 +92,6 @@ body {
 
 .priority {
   float:right
-}
-
-header {
-  background-color: #cf142b;
-  margin: auto -16px;
-  padding: 16px 32px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-}
-
-header h1 {
-  color: #fff
 }
 
 .todo-form {
@@ -108,16 +114,6 @@ header h1 {
   resize: none;
 }
 
-select {
-  appearance: none;
-  margin: 10px;
-  font-size: 16px;
-  border: 1px solid #CCC;
-  border-radius: 4px;
-  height: 34px;
-  text-align: center
-}
-
 .todo-form button {
   color: #fff;
   padding: 5px;
@@ -137,7 +133,3 @@ div.filter-item > input{
 form.sort > label {
   padding: 2% 1%;
 }
-
-/* .label-text {
-  background-color: #0F2C67;
-} */

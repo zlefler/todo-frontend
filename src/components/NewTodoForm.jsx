@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function NewTodoForm({onSubmit}) {
+function NewTodoForm({onTodoSubmit}) {
 const [task, setTask] = useState('')
 const [label, setLabel] = useState('3')
 const [priority, setPriority] = useState('3')
@@ -17,7 +17,7 @@ function handleSubmit(e) {
         priority_id: priority
     }
     console.log(priority);
-    onSubmit(newTask)
+    onTodoSubmit(newTask)
 }
 
     return <div className='todo-form'>

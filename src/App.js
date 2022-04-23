@@ -34,7 +34,7 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
 
-  function onSubmit(newTask) {
+  function onTodoSubmit(newTask) {
     fetch(`http://localhost:9292/todos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -83,7 +83,7 @@ function App() {
   return (
     <div>
       <Header />
-      <NewTodoForm onSubmit={onSubmit} />
+      <NewTodoForm onTodoSubmit={onTodoSubmit} />
       <FilterList onCheck={onCheck} labels={labels} />
       <SortForm onSortChange={onSortChange} sortOption={sortOption} />
       <TodoList
