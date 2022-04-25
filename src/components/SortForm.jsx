@@ -4,7 +4,6 @@ function handleButtonChange(value) {
 onSortChange(value)
 }
 
-
     return <div className='sort'>
         <form className="sort">
                 <label htmlFor="order_priorities">Sort alphabetically</label>
