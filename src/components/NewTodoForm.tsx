@@ -1,15 +1,15 @@
 import {useState} from 'react'
 
-function NewTodoForm({onTodoSubmit}) {
+function NewTodoForm(onTodoSubmit: (newTask: Task)=> null) {
 const [task, setTask] = useState('')
 const [label, setLabel] = useState('3')
 const [priority, setPriority] = useState('3')
 
-function handleTaskChange(text) {
+function handleTaskChange(text: string) {
     setTask(text)
 }
 
-function handleSubmit(e) {
+function handleSubmit(e: Event) {
     e.preventDefault()
     const newTask = {
         task: task,
@@ -21,8 +21,8 @@ function handleSubmit(e) {
 }
 
     return <div className='todo-form'>
-    <form onSubmit={(e) => handleSubmit(e)}>
-<textarea type="text" placeholder="What's next?" rows='3' onChange={(e) =>handleTaskChange(e.target.value)} value={task} name="task"/>
+    <form onSubmit={e => handleSubmit(e)}>
+<textarea placeholder="What's next?" rows={3} onChange={(e) =>handleTaskChange(e.target.value)} value={task} name="task"/>
 <label htmlFor="label">Label</label>
 <select name="label" onChange={(e) => setLabel(e.target.value)} value={label} id="label">
     <option value="1">Work</option>

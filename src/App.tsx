@@ -27,14 +27,14 @@ function App() {
       });
   }, []);
 
-  function onDelete(id) {
+  function onDelete(id: number) {
     fetch(`http://localhost:9292/todos/${id}`, {
       method: 'DELETE',
     });
     setTodos(todos.filter((todo) => todo.id !== id));
   }
 
-  function onTodoSubmit(newTask) {
+  function onTodoSubmit(newTask: string) {
     fetch(`http://localhost:9292/todos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -44,7 +44,7 @@ function App() {
       .then((data) => setTodos([...todos, data]));
   }
 
-  function onCheck(checkedLabel, isChecked) {
+  function onCheck(checkedLabel: {id: number}, isChecked: boolean) {
     isChecked
       ? setFilteredLabels([...filteredLabels, checkedLabel])
       : setFilteredLabels(
@@ -52,7 +52,7 @@ function App() {
         );
   }
 
-  function onEditSubmit(todo, editText) {
+  function onEditSubmit(todo: {task: string, priority_id: number, label_id: number, id: number}, editText: string) {
     const newTodo = {
       task: editText,
       priority_id: todo.priority_id,
@@ -73,12 +73,18 @@ function App() {
       );
   }
 
-  function onSortChange(value) {
+  function onSortChange(value: string) {
     fetch(`http://localhost:9292/todos/${value}`, { mode: 'cors' })
       .then((res) => res.json())
       .then((data) => setTodos(data));
     setSortOption(value);
   }
+
+  const TodoListProps = {sortOption: {sortOption}, 
+  onEditSubmit: {onEditSubmit}, 
+  handleDelete: {onDelete}, 
+  labels: {filteredLabels}, 
+  todos: {todos}}
 
   return (
     <div>
@@ -86,13 +92,7 @@ function App() {
       <NewTodoForm onTodoSubmit={onTodoSubmit} />
       <FilterList onCheck={onCheck} labels={labels} />
       <SortForm onSortChange={onSortChange} sortOption={sortOption} />
-      <TodoList
-        sortOption={sortOption}
-        onEditSubmit={onEditSubmit}
-        handleDelete={onDelete}
-        labels={filteredLabels}
-        todos={todos}
-      />
+      <TodoList {...TodoListProps}/>
     </div>
   );
 }
