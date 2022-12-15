@@ -1,16 +1,16 @@
 import {useState} from 'react'
 
-function Filter(label: {label_name: string, id: number}, onCheck: (checkedLabel: {id: number}, isChecked: boolean) => null) {
+function Filter(currentLabel: {label_name: string, id: number}, onCheck: (checkedLabel: {id: number}, isChecked: boolean) => null) {
 const [isChecked, setIsChecked] = useState(true)
 
 function handleCheck() {
-    onCheck(label, !isChecked)
+    onCheck(currentLabel, !isChecked)
     setIsChecked(isChecked => !isChecked)
 }
 
-    return <div className='filter-item' key={'div' + label.label_name} >
-    <label htmlFor={label.label_name}>{label.label_name}</label>
-<input onChange={() => handleCheck()} type="checkbox" checked={isChecked} name={label.label_name} value={label.label_name}/>
+    return <div className='filter-item' key={'div' + currentLabel.label_name} >
+    <label htmlFor={currentLabel.label_name}>{currentLabel.label_name}</label>
+<input onChange={() => handleCheck()} type="checkbox" checked={isChecked} name={currentLabel.label_name} value={currentLabel.label_name}/>
 </div>
 }
 

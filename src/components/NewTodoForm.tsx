@@ -1,5 +1,12 @@
 import {useState} from 'react'
 
+type Task = {
+    task: string,
+    label_id: string,
+    priority_id: string,
+    id?: string
+  }
+
 function NewTodoForm(onTodoSubmit: (newTask: Task)=> null) {
 const [task, setTask] = useState('')
 const [label, setLabel] = useState('3')
@@ -8,6 +15,7 @@ const [priority, setPriority] = useState('3')
 function handleTaskChange(text: string) {
     setTask(text)
 }
+
 
 function handleSubmit(e: Event) {
     e.preventDefault()
@@ -21,7 +29,7 @@ function handleSubmit(e: Event) {
 }
 
     return <div className='todo-form'>
-    <form onSubmit={e => handleSubmit(e)}>
+    <form onSubmit={(e: React.SyntheticEvent) => handleSubmit(e)}>
 <textarea placeholder="What's next?" rows={3} onChange={(e) =>handleTaskChange(e.target.value)} value={task} name="task"/>
 <label htmlFor="label">Label</label>
 <select name="label" onChange={(e) => setLabel(e.target.value)} value={label} id="label">

@@ -12,6 +12,18 @@ function App() {
   const [filteredLabels, setFilteredLabels] = useState([]);
   const [sortOption, setSortOption] = useState('');
 
+  type Task = {
+    task: string,
+    label_id: string,
+    priority_id: string,
+    id?: string
+  }
+
+  type Label = {
+    label_name: string,
+    id?: string
+  }
+
   useEffect(() => {
     fetch('http://localhost:9292/todos')
       .then((res) => res.json())
@@ -34,7 +46,7 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   }
 
-  function onTodoSubmit(newTask: string) {
+  function onTodoSubmit(newTask: Task) {
     fetch(`http://localhost:9292/todos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -44,7 +56,7 @@ function App() {
       .then((data) => setTodos([...todos, data]));
   }
 
-  function onCheck(checkedLabel: {id: number}, isChecked: boolean) {
+  function onCheck(checkedLabel: Label, isChecked: boolean) {
     isChecked
       ? setFilteredLabels([...filteredLabels, checkedLabel])
       : setFilteredLabels(
@@ -52,7 +64,7 @@ function App() {
         );
   }
 
-  function onEditSubmit(todo: {task: string, priority_id: number, label_id: number, id: number}, editText: string) {
+  function onEditSubmit(todo: Task, editText: string) {
     const newTodo = {
       task: editText,
       priority_id: todo.priority_id,
